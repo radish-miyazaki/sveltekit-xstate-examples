@@ -21,19 +21,19 @@
 
 	const buttonItems: CounterButtonConfig[] = [
 		{
-			type: 'INCREMENT',
+			type: 'increment',
 			icon: Plus,
 			label: 'Increment',
 			color: 'text-green-600'
 		},
 		{
-			type: 'DECREMENT',
+			type: 'decrement',
 			icon: Minus,
 			label: 'Decrement',
 			color: 'text-red-600'
 		},
 		{
-			type: 'RESET',
+			type: 'reset',
 			icon: RotateCcw,
 			label: 'Reset',
 			color: 'text-blue-600'
@@ -43,7 +43,7 @@
 
 {#snippet button({ type, color, label, icon: Icon }: CounterButtonConfig)}
 	<button
-		class={`p-3 rounded-full border-2 border-gray-300 ${color} hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all duration-300 ease-in-out`}
+		class={`rounded-full border-2 border-gray-300 p-3 ${color} transition-all duration-300 ease-in-out hover:bg-gray-100 focus:ring-2 focus:ring-gray-400 focus:outline-none`}
 		onclick={() => send({ type } as CounterEvent)}
 		aria-label={label}
 	>
@@ -52,10 +52,10 @@
 {/snippet}
 
 <div
-	class="bg-white p-12 rounded-lg shadow-2xl transition-all duration-500 ease-in-out hover:shadow-3xl"
+	class="hover:shadow-3xl rounded-lg bg-white p-12 shadow-2xl transition-all duration-500 ease-in-out"
 >
 	<div
-		class={`w-48 h-48 rounded-full flex items-center justify-center mb-8 ${accentColor} bg-opacity-10 transition-all duration-300`}
+		class={`mb-8 flex h-48 w-48 items-center justify-center rounded-full ${accentColor} bg-opacity-10 transition-all duration-300`}
 		aria-live="polite"
 		aria-label={`Current count is ${$snapshot.context.count}`}
 	>
@@ -65,7 +65,7 @@
 			{$snapshot.context.count}
 		</span>
 	</div>
-	<div class="flex space-x-6 justify-center">
+	<div class="flex justify-center space-x-6">
 		{#each buttonItems as item (item.type)}
 			{@render button(item)}
 		{/each}

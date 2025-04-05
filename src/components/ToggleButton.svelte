@@ -9,19 +9,19 @@
 </script>
 
 <button
-	onclick={() => send({ type: 'TOGGLE' })}
+	onclick={() => send({ type: 'toggle' })}
 	class={`
-    w-32 h-16 rounded-full p-1 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 
+    h-16 w-32 rounded-full p-1 transition-colors duration-300 ease-in-out focus:ring-2 focus:ring-blue-400 focus:outline-none 
     ${isActive ? 'bg-green-500' : 'bg-gray-300'}
   `}
 	aria-label={isActive ? 'Turn off' : 'Turn on'}
 >
 	<div
-		class={`w-14 h-14 rounded-full transform transition-transform duration-300 ease-in-out flex items-center justify-center ${
+		class={`flex h-14 w-14 transform items-center justify-center rounded-full transition-transform duration-300 ease-in-out ${
 			isActive ? 'translate-x-16 bg-white' : 'translate-x-0 bg-gray-100'
 		}`}
 	>
-		<Power class={`w-8 h-8 ${isActive ? 'text-green-500' : 'text-gray-400'}`} />
+		<Power class={`h-8 w-8 ${isActive ? 'text-green-500' : 'text-gray-400'}`} />
 	</div>
 </button>
 <span class="mt-4 text-2xl font-bold text-gray-700">

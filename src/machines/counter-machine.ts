@@ -4,7 +4,7 @@ type CounterContext = {
 	count: number;
 };
 
-export type CounterEvent = { type: 'INCREMENT' } | { type: 'DECREMENT' } | { type: 'RESET' };
+export type CounterEvent = { type: 'increment' } | { type: 'decrement' } | { type: 'reset' };
 
 export const counterMachine = setup({
 	types: {} as {
@@ -16,17 +16,17 @@ export const counterMachine = setup({
 	id: 'counter',
 	context: { count: 0 },
 	on: {
-		INCREMENT: {
+		increment: {
 			actions: assign({
 				count: ({ context }) => context.count + 1
 			})
 		},
-		DECREMENT: {
+		decrement: {
 			actions: assign({
 				count: ({ context }) => context.count - 1
 			})
 		},
-		RESET: {
+		reset: {
 			actions: assign({ count: 0 })
 		}
 	}

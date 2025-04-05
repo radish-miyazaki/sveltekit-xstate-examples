@@ -1,6 +1,6 @@
 import { setup } from 'xstate';
 
-export type ToggleEvent = { type: 'TOGGLE' };
+export type ToggleEvent = { type: 'toggle' };
 
 export const toggleMachine = setup({
 	types: {} as {
@@ -12,10 +12,10 @@ export const toggleMachine = setup({
 	initial: 'inactive',
 	states: {
 		inactive: {
-			on: { TOGGLE: 'active' }
+			on: { toggle: 'active' }
 		},
 		active: {
-			on: { TOGGLE: 'inactive' }
+			on: { toggle: 'inactive' }
 		}
 	}
 });

@@ -11,7 +11,7 @@ function assertEvent<TEvent extends EventObject, Type extends TEvent['type']>(
 
 type Player = 'x' | 'o';
 
-type TickTacToeEvent = { type: 'PLAY'; value: number } | { type: 'RESET' };
+type TickTacToeEvent = { type: 'play'; value: number } | { type: 'reset' };
 
 export type TickTacToeContext = {
 	board: Array<Player | null>;
@@ -34,7 +34,7 @@ export const tickTacToeMachine = setup({
 	actions: {
 		updateBoard: assign({
 			board: ({ context, event }) => {
-				assertEvent(event, 'PLAY');
+				assertEvent(event, 'play');
 				const updatedBoard = [...context.board];
 				updatedBoard[event.value] = context.player;
 				return updatedBoard;
@@ -75,7 +75,7 @@ export const tickTacToeMachine = setup({
 			return context.moves === 9;
 		},
 		isValidMore: ({ context, event }) => {
-			if (event.type !== 'PLAY') return false;
+			if (event.type !== 'play') return false;
 
 			return context.board[event.value] === null;
 		}
@@ -91,7 +91,7 @@ export const tickTacToeMachine = setup({
 				{ target: 'gameOver.draw', guard: 'checkDraw' }
 			],
 			on: {
-				PLAY: [
+				play: [
 					{
 						target: 'playing',
 						guard: 'isValidMore',
@@ -112,7 +112,7 @@ export const tickTacToeMachine = setup({
 				}
 			},
 			on: {
-				RESET: {
+				reset: {
 					target: 'playing',
 					actions: 'resetGame'
 				}

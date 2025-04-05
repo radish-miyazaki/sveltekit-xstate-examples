@@ -7,11 +7,11 @@ type TemperatureContext = {
 
 type TemperatureEvent =
 	| {
-			type: 'CELSIUS';
+			type: 'celsius';
 			value: string;
 	  }
 	| {
-			type: 'FAHRENHEIT';
+			type: 'fahrenheit';
 			value: string;
 	  };
 
@@ -23,13 +23,13 @@ export const temperatureMachine = setup({
 }).createMachine({
 	context: { celsius: undefined, fahrenheit: undefined },
 	on: {
-		CELSIUS: {
+		celsius: {
 			actions: assign({
 				celsius: ({ event }) => event.value,
 				fahrenheit: ({ event }) => (event.value.length ? +event.value * (9 / 5) + 32 : '')
 			})
 		},
-		FAHRENHEIT: {
+		fahrenheit: {
 			actions: assign({
 				celsius: ({ event }) => (event.value.length ? (+event.value - 32) * (5 / 9) : ''),
 				fahrenheit: ({ event }) => event.value

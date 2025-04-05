@@ -13,31 +13,31 @@
 	};
 
 	const handleStartOrStopClick = () => {
-		send({ type: $snapshot.matches('running') ? 'STOP' : 'START' });
+		send({ type: $snapshot.matches('running') ? 'stop' : 'start' });
 	};
 
-	const handleResetClick = () => send({ type: 'RESET' });
+	const handleResetClick = () => send({ type: 'reset' });
 </script>
 
-<div class="flex flex-col items-center justify-center min-h-screen bg-white text-gray-800 p-4">
+<div class="flex min-h-screen flex-col items-center justify-center bg-white p-4 text-gray-800">
 	<div
-		class="w-64 h-64 md:w-80 md:h-80 bg-gray-100 rounded-full shadow-lg flex items-center justify-center mb-8"
+		class="mb-8 flex h-64 w-64 items-center justify-center rounded-full bg-gray-100 shadow-lg md:h-80 md:w-80"
 	>
-		<div class="text-4xl md:text-5xl font-bold text-gray-700 font-mono tabular-nums">
+		<div class="font-mono text-4xl font-bold text-gray-700 tabular-nums md:text-5xl">
 			{formatTime($snapshot.context.elapsed)}
 		</div>
 	</div>
 	<div class="flex space-x-4">
 		<button
 			onclick={handleStartOrStopClick}
-			class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+			class="focus:ring-opacity-50 rounded-full bg-blue-500 px-6 py-2 font-bold text-white transition duration-200 hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
 			aria-label={$snapshot.matches('running') ? 'Stop' : 'Start'}
 		>
 			{$snapshot.matches('running') ? 'Stop' : 'Start'}
 		</button>
 		<button
 			onclick={handleResetClick}
-			class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+			class="focus:ring-opacity-50 rounded-full bg-gray-200 px-6 py-2 font-bold text-gray-700 transition duration-200 hover:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:outline-none"
 			aria-label="Reset"
 		>
 			Reset

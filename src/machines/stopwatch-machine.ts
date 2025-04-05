@@ -5,10 +5,10 @@ type StopwatchContext = {
 };
 
 export type StopwatchEvent =
-	| { type: 'START' }
-	| { type: 'STOP' }
-	| { type: 'RESET' }
-	| { type: 'TICK' };
+	| { type: 'start' }
+	| { type: 'stop' }
+	| { type: 'reset' }
+	| { type: 'tick' };
 
 export const stopwatchMachine = setup({
 	types: {} as {
@@ -28,24 +28,24 @@ export const stopwatchMachine = setup({
 	context: { elapsed: 0 },
 	states: {
 		stopped: {
-			on: { START: 'running' }
+			on: { start: 'running' }
 		},
 		running: {
 			invoke: {
 				src: 'ticks'
 			},
 			on: {
-				TICK: {
+				tick: {
 					actions: assign({
 						elapsed: ({ context }) => context.elapsed + 1
 					})
 				},
-				STOP: 'stopped'
+				stop: 'stopped'
 			}
 		}
 	},
 	on: {
-		RESET: {
+		reset: {
 			actions: assign({ elapsed: 0 }),
 			target: '.stopped'
 		}

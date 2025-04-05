@@ -11,7 +11,7 @@
 {#snippet cellButton({ index, value }: { index: number; value: string | null })}
 	<button
 		class="flex h-24 w-24 transform items-center justify-center border-2 border-gray-200 bg-white text-4xl transition-all duration-300 ease-in-out hover:scale-105 hover:bg-gray-50"
-		onclick={() => send({ type: 'PLAY', value: index })}
+		onclick={() => send({ type: 'play', value: index })}
 		disabled={!!value || $snapshot.hasTag('winner') || $snapshot.hasTag('draw')}
 	>
 		{#if value === 'x'}
@@ -48,7 +48,7 @@
 				</p>
 			{/if}
 			<button
-				onclick={() => send({ type: 'RESET' })}
+				onclick={() => send({ type: 'reset' })}
 				class="transform rounded-full bg-gradient-to-r from-blue-500 to-red-500 px-6 py-3 font-bold text-white transition-all duration-300 ease-in-out hover:scale-105 hover:from-blue-600 hover:to-red-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
 			>
 				ゲームをリセット
