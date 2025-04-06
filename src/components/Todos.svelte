@@ -16,6 +16,7 @@
 			return true;
 		})
 	);
+	const completedTodos = $derived(todos.filter((todo) => todo.completed));
 
 	const handleNewTodoInput = (e: Event) => {
 		const target = e.target as HTMLInputElement;
@@ -149,7 +150,7 @@
 					Completed
 				</button>
 			</div>
-			{#if todos.length > 0}
+			{#if completedTodos.length > 0}
 				<button
 					onclick={() => send({ type: 'todos.clearCompleted' })}
 					class="rounded-md bg-red-500 px-3 py-1 text-white transition-colors duration-200 hover:bg-red-600"
