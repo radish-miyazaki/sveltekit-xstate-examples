@@ -1,11 +1,11 @@
 <script lang="ts">
-	import TicTacToe from '../components/TicTacToe.svelte';
+	import Todos from '../components/Todos.svelte';
 </script>
 
 <main>
 	<div class="flex h-screen items-center justify-center">
 		<div class="flex flex-col items-center">
-			<TicTacToe />
+			<Todos />
 		</div>
 	</div>
 </main>
